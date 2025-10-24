@@ -260,14 +260,19 @@ export const Dashboard = () => {
                <div className="flex-shrink-0 flex items-center">
                  <motion.div
                    className="flex items-center"
-                   whileHover={{ scale: 1.05 }}
+                   whileHover={{ scale: 1.02 }}
                  >
-                   <Users className="h-8 w-8 text-indigo-600" />
-                   <span className="ml-2 text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                   <div className="p-1.5 rounded-lg bg-indigo-600/10">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                       <circle cx="9" cy="7" r="4"></circle>
+                       <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                       <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                     </svg>
+                   </div>
+                   <span className="ml-3 text-xl font-semibold text-indigo-700">
                      User Management
                    </span>
-                   
-
                  </motion.div>
                </div>
                <nav className="hidden sm:ml-6 sm:flex sm:space-x-8">
