@@ -262,15 +262,15 @@ export const Dashboard = () => {
                    className="flex items-center"
                    whileHover={{ scale: 1.02 }}
                  >
-                   <div className="p-1.5 rounded-lg bg-indigo-600/10">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                   <div className="p-1.5 rounded-lg bg-white/10">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                        <circle cx="9" cy="7" r="4"></circle>
                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                      </svg>
                    </div>
-                   <span className="ml-3 text-xl font-semibold text-indigo-700">
+                   <span className="ml-3 text-xl font-semibold text-white">
                      User Management
                    </span>
                  </motion.div>
@@ -278,7 +278,7 @@ export const Dashboard = () => {
                <nav className="hidden sm:ml-6 sm:flex sm:space-x-8">
                  <motion.a 
                    href="#" 
-                   className="border-indigo-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:text-indigo-200 transition-colors duration-200 drop-shadow-lg"
+                   className="border-white text-white/90 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:text-white transition-colors duration-200 drop-shadow-lg"
                    whileHover={{ scale: 1.05 }}
                  >
                    Dashboard
