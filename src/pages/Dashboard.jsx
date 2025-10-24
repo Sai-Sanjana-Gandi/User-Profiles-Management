@@ -66,13 +66,25 @@ export const Dashboard = () => {
     // Create a properly formatted user object
     const newUser = {
       id: Date.now().toString(),
-      name: `${userData.firstName || ''} ${userData.lastName || ''}`.trim(),
+      name: userData.name || `${userData.firstName || ''} ${userData.lastName || ''}`.trim(),
       firstName: userData.firstName || '',
       lastName: userData.lastName || '',
       email: userData.email || '',
       phone: userData.phone || '',
-      role: userData.role || 'User',
-      ...userData // Include all other fields
+      role: userData.role || (userData.education?.qualification || 'User'),
+      // Include all other fields from the form
+      ...userData,
+      // Ensure we have empty objects for nested data if not provided
+      education: userData.education || {
+        qualification: '',
+        college: '',
+        gradYear: '',
+        skillsPrimary: [],
+        skillsSecondary: []
+      },
+      experience: userData.experience || [{ domain: '', subDomain: '', years: '' }],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
     };
 
     setIsSubmitting(true);
@@ -179,8 +191,8 @@ export const Dashboard = () => {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-pink-100 to-rose-100 rounded-full opacity-50"></div>
       </div>
 
-      {/* Navbar */}
-      <header className="bg-white shadow-sm">
+       {/* Translucent Navbar */}
+       <header className="bg-white/90 backdrop-blur-xl shadow-lg border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
@@ -203,15 +215,17 @@ export const Dashboard = () => {
                 </a>
               </nav>
             </div>
-            <div className="flex items-center">
-              <button
-                onClick={() => setIsAddModalOpen(true)}
-                className="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                <Plus className="-ml-1 mr-2 h-4 w-4" />
-                Add User
-              </button>
-            </div>
+             <div className="flex items-center">
+               <motion.button
+                 onClick={() => setIsAddModalOpen(true)}
+                 className="ml-3 inline-flex items-center px-6 py-3 border border-transparent text-sm font-bold rounded-xl shadow-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+                 whileHover={{ scale: 1.05 }}
+                 whileTap={{ scale: 0.95 }}
+               >
+                 <Plus className="-ml-1 mr-2 h-5 w-5" />
+                 Add User
+               </motion.button>
+             </div>
           </div>
         </div>
       </header>
@@ -336,16 +350,17 @@ export const Dashboard = () => {
                       : 'Get started by adding your first user'
                     }
                   </p>
-                  {!searchTerm && (
-                    <motion.button
-                      onClick={() => setIsAddModalOpen(true)}
-                      className="btn-primary text-lg px-8 py-4"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Add First User
-                    </motion.button>
-                  )}
+                   {!searchTerm && (
+                     <motion.button
+                       onClick={() => setIsAddModalOpen(true)}
+                       className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-bold rounded-xl shadow-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+                       whileHover={{ scale: 1.05 }}
+                       whileTap={{ scale: 0.95 }}
+                     >
+                       <Plus className="-ml-1 mr-2 h-5 w-5" />
+                       Add First User
+                     </motion.button>
+                   )}
                 </motion.div>
               ) : (
                 <motion.div
