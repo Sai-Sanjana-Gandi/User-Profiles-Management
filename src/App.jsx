@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastProvider } from './components/Toast';
+import { ToastProvider, ToastContainer } from './components/Toast';
 import { Dashboard } from './pages/Dashboard';
 
 /**
@@ -11,6 +11,7 @@ function App() {
     <ToastProvider>
       <Router>
         <div className="App">
+          <ToastContainer />
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/dashboard" element={<Dashboard />} />

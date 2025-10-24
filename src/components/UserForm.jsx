@@ -151,8 +151,14 @@ export const UserForm = ({ user, onSubmit, onCancel, isLoading = false }) => {
     const userData = {
       ...formData,
       name: `${formData.firstName} ${formData.lastName}`.trim(),
-      role: formData.education.qualification || 'Professional'
+      role: formData.education.qualification || 'Professional',
+      updatedAt: new Date().toISOString()
     };
+
+    // Add createdAt if it's a new user
+    if (!user) {
+      userData.createdAt = new Date().toISOString();
+    }
 
     onSubmit(userData);
   };

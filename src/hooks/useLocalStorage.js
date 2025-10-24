@@ -42,7 +42,44 @@ export const useUsers = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // No need to initialize with sample data - users will be created through sign-up
+  // Initialize with sample data for testing
+  useEffect(() => {
+    if (users.length === 0) {
+      const sampleUsers = [
+        {
+          id: '1',
+          name: 'John Doe',
+          firstName: 'John',
+          lastName: 'Doe',
+          email: 'john.doe@example.com',
+          role: 'Software Engineer',
+          profilePicture: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: '2',
+          name: 'Jane Smith',
+          firstName: 'Jane',
+          lastName: 'Smith',
+          email: 'jane.smith@example.com',
+          role: 'Product Manager',
+          profilePicture: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+          createdAt: new Date().toISOString(),
+        },
+        {
+          id: '3',
+          name: 'Mike Johnson',
+          firstName: 'Mike',
+          lastName: 'Johnson',
+          email: 'mike.johnson@example.com',
+          role: 'UX Designer',
+          profilePicture: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+          createdAt: new Date().toISOString(),
+        },
+      ];
+      setUsers(sampleUsers);
+    }
+  }, [users.length, setUsers]);
 
   const addUser = (userData) => {
     setLoading(true);
