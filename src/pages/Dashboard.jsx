@@ -191,30 +191,55 @@ export const Dashboard = () => {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-pink-100 to-rose-100 rounded-full opacity-50"></div>
       </div>
 
-       {/* Translucent Navbar */}
-       <header className="bg-white/90 backdrop-blur-xl shadow-lg border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <Users className="h-8 w-8 text-indigo-600" />
-                <span className="ml-2 text-xl font-bold text-gray-900">UserManagement</span>
-              </div>
-              <nav className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <a href="#" className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                  Dashboard
-                </a>
-                <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                  Analytics
-                </a>
-                <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                  Team
-                </a>
-                <a href="#" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
-                  Settings
-                </a>
-              </nav>
-            </div>
+       {/* Enhanced Translucent Navbar */}
+       <header className="relative bg-white/95 backdrop-blur-xl shadow-2xl border-b border-white/30">
+         <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-purple-50/50 to-indigo-50/50"></div>
+         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="flex justify-between h-16">
+             <div className="flex">
+               <div className="flex-shrink-0 flex items-center">
+                 <motion.div
+                   className="flex items-center"
+                   whileHover={{ scale: 1.05 }}
+                 >
+                   <Users className="h-8 w-8 text-indigo-600" />
+                   <span className="ml-2 text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                     UserManagement
+                   </span>
+                 </motion.div>
+               </div>
+               <nav className="hidden sm:ml-6 sm:flex sm:space-x-8">
+                 <motion.a 
+                   href="#" 
+                   className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:text-indigo-600 transition-colors duration-200"
+                   whileHover={{ scale: 1.05 }}
+                 >
+                   Dashboard
+                 </motion.a>
+                 <motion.a 
+                   href="#" 
+                   className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
+                   whileHover={{ scale: 1.05 }}
+                 >
+                   Analytics
+                 </motion.a>
+                 <motion.a 
+                   href="#" 
+                   className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
+                   whileHover={{ scale: 1.05 }}
+                 >
+                   Team
+                 </motion.a>
+                 <motion.a 
+                   href="#" 
+                   className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
+                   whileHover={{ scale: 1.05 }}
+                 >
+                   Settings
+                 </motion.a>
+               </nav>
+             </div>
              <div className="flex items-center">
                <motion.button
                  onClick={() => setIsAddModalOpen(true)}
@@ -226,8 +251,8 @@ export const Dashboard = () => {
                  Add User
                </motion.button>
              </div>
-          </div>
-        </div>
+           </div>
+         </div>
       </header>
 
       {/* Main Content */}

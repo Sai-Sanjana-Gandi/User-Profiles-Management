@@ -135,6 +135,9 @@ export const UserForm = ({ user, onSubmit, onCancel, isLoading = false }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    console.log('Form submitted with data:', formData);
+    console.log('Form valid:', isFormValid);
+    
     // Basic validation
     const newErrors = {};
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
@@ -143,6 +146,7 @@ export const UserForm = ({ user, onSubmit, onCancel, isLoading = false }) => {
     if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
 
     if (Object.keys(newErrors).length > 0) {
+      console.log('Validation errors:', newErrors);
       setErrors(newErrors);
       return;
     }
@@ -160,6 +164,7 @@ export const UserForm = ({ user, onSubmit, onCancel, isLoading = false }) => {
       userData.createdAt = new Date().toISOString();
     }
 
+    console.log('Calling onSubmit with:', userData);
     onSubmit(userData);
   };
 
@@ -700,18 +705,26 @@ export const UserForm = ({ user, onSubmit, onCancel, isLoading = false }) => {
 
         {/* Form Actions */}
         <div className="flex space-x-3 pt-6 border-t border-gray-200">
-          <button
+          <motion.button
             type="button"
             onClick={onCancel}
-            className="btn-secondary flex-1"
+            className="flex-1 px-6 py-3 rounded-xl font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 transition-all duration-300 transform hover:scale-105"
             disabled={isLoading}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Cancel
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             type="submit"
-            className="btn-primary flex-1"
+            className={`flex-1 px-6 py-3 rounded-xl font-bold text-white transition-all duration-300 transform ${
+              !isFormValid || isLoading
+                ? 'bg-gray-400 cursor-not-allowed'
+                : 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 hover:scale-105 hover:shadow-xl'
+            }`}
             disabled={!isFormValid || isLoading}
+            whileHover={!isFormValid || isLoading ? {} : { scale: 1.05 }}
+            whileTap={!isFormValid || isLoading ? {} : { scale: 0.95 }}
           >
             {isLoading ? (
               <div className="flex items-center justify-center space-x-2">
@@ -721,7 +734,7 @@ export const UserForm = ({ user, onSubmit, onCancel, isLoading = false }) => {
             ) : (
               user ? 'Update User' : 'Add User'
             )}
-          </button>
+          </motion.button>
         </div>
       </form>
     </motion.div>
