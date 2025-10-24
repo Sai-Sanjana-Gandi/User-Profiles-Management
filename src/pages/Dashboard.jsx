@@ -184,17 +184,76 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Background elements */}
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full opacity-50"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-pink-100 to-rose-100 rounded-full opacity-50"></div>
+        {/* Elegant gradient orbs */}
+        <motion.div 
+          className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-15"
+          style={{
+            background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)'
+          }}
+          animate={{ 
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full opacity-15"
+          style={{
+            background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%)'
+          }}
+          animate={{ 
+            x: [0, -40, 0],
+            y: [0, 30, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ duration: 35, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full opacity-10"
+          style={{
+            background: 'linear-gradient(135deg, #0ea5e9 0%, #38bdf8 50%, #7dd3fc 100%)'
+          }}
+          animate={{ 
+            rotate: [0, 360],
+            scale: [1, 1.3, 1]
+          }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        />
+        
+        {/* Elegant floating particles */}
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1.5 h-1.5 rounded-full opacity-30"
+            style={{
+              background: `linear-gradient(45deg, #60a5fa, #a855f7, #38bdf8)`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              x: [0, Math.random() * 40 - 20, 0],
+              opacity: [0, 0.8, 0],
+              scale: [0, 1.5, 0],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 6,
+              repeat: Infinity,
+              delay: Math.random() * 4,
+            }}
+          />
+        ))}
       </div>
 
        {/* Enhanced Translucent Navbar */}
-       <header className="relative bg-white/95 backdrop-blur-xl shadow-2xl border-b border-white/30">
-         <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-purple-50/50 to-indigo-50/50"></div>
-         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+       <header className="relative backdrop-blur-2xl shadow-2xl border-b border-white/30">
+         <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-white/10 to-white/20"></div>
+         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+         <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent"></div>
          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="flex justify-between h-16">
              <div className="flex">
@@ -205,38 +264,19 @@ export const Dashboard = () => {
                  >
                    <Users className="h-8 w-8 text-indigo-600" />
                    <span className="ml-2 text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                     UserManagement
+                     User Management
                    </span>
+                   
+
                  </motion.div>
                </div>
                <nav className="hidden sm:ml-6 sm:flex sm:space-x-8">
                  <motion.a 
                    href="#" 
-                   className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:text-indigo-600 transition-colors duration-200"
+                   className="border-indigo-500 text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium hover:text-indigo-200 transition-colors duration-200 drop-shadow-lg"
                    whileHover={{ scale: 1.05 }}
                  >
                    Dashboard
-                 </motion.a>
-                 <motion.a 
-                   href="#" 
-                   className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
-                   whileHover={{ scale: 1.05 }}
-                 >
-                   Analytics
-                 </motion.a>
-                 <motion.a 
-                   href="#" 
-                   className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
-                   whileHover={{ scale: 1.05 }}
-                 >
-                   Team
-                 </motion.a>
-                 <motion.a 
-                   href="#" 
-                   className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors duration-200"
-                   whileHover={{ scale: 1.05 }}
-                 >
-                   Settings
                  </motion.a>
                </nav>
              </div>
@@ -271,13 +311,31 @@ export const Dashboard = () => {
                   <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-purple-500 w-5 h-5 z-10">
                     <Search className="w-5 h-5" />
                   </div>
-                  <input
-                    type="text"
-                    placeholder="Search users by name, email, role, phone, or address..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-12 pr-12 py-4 bg-white/90 backdrop-blur-lg border-2 border-purple-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-purple-500/30 focus:border-purple-500 transition-all duration-300 placeholder-gray-400 hover:bg-white shadow-xl hover:shadow-2xl text-gray-700 font-medium"
-                  />
+                   <input
+                     type="text"
+                     placeholder="Search users by name, email, role, phone, or address..."
+                     value={searchTerm}
+                     onChange={(e) => setSearchTerm(e.target.value)}
+                     className="w-full pl-12 pr-12 py-4 rounded-2xl focus:outline-none transition-all duration-500 placeholder-gray-500 text-gray-800 font-medium"
+                     style={{
+                       background: 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.15) 100%)',
+                       backdropFilter: 'blur(20px)',
+                       border: '2px solid rgba(255,255,255,0.3)',
+                       boxShadow: '0 8px 25px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)'
+                     }}
+                     onFocus={(e) => {
+                       e.target.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.25) 100%)';
+                       e.target.style.borderColor = 'rgba(255,255,255,0.5)';
+                       e.target.style.boxShadow = '0 15px 35px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3), 0 0 0 4px rgba(147, 51, 234, 0.1)';
+                       e.target.style.transform = 'translateY(-2px)';
+                     }}
+                     onBlur={(e) => {
+                       e.target.style.background = 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.15) 100%)';
+                       e.target.style.borderColor = 'rgba(255,255,255,0.3)';
+                       e.target.style.boxShadow = '0 8px 25px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.2)';
+                       e.target.style.transform = 'translateY(0)';
+                     }}
+                   />
                   {searchTerm && (
                     <button
                       onClick={() => setSearchTerm('')}
